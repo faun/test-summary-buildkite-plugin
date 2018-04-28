@@ -1,9 +1,3 @@
-- jobs = failures.map(&:job_id).uniq.reject { |job| job == nil }
-- if jobs.count == 1
-  Job:
-  %a{href: "##{jobs.first}"}
-    = jobs.first
-
 %ul
   - failures.each do |failure|
     %li
@@ -15,10 +9,11 @@
           %pre
             %code
               = failure.details
-          - unless failure.job_id.nil? || jobs.count == 1
+          - unless failure.job_id.nil?
             %p
-              Job:
+              in
               %a{href: "##{failure.job_id}"}
+                job
                 = failure.job_id
       - else
         %code

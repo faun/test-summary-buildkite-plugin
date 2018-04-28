@@ -102,7 +102,7 @@ RSpec.describe TestSummaryBuildkitePlugin::Input do
     let(:artifact_path) { 'rspec*' }
 
     it 'has all failures' do
-      expect(input.failures.count).to eq(5)
+      expect(input.failures.count).to eq(6)
     end
 
     it 'sorts failures' do
