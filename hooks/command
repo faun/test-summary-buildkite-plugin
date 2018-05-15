@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -eEuo pipefail
+set -x
 
 DOCKER_REPO=tessereth/test-summary-buildkite-plugin
 
