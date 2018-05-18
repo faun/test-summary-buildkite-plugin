@@ -32,6 +32,6 @@ fi
 echo "Running container"
 
 docker run --rm \
-  -v "$(which buildkite-agent):/usr/bin/buildkite-agent:ro" \
+  -v "/$(which buildkite-agent):/usr/bin/buildkite-agent:ro" \
   -e BUILDKITE_BUILD_ID -e BUILDKITE_JOB_ID -e BUILDKITE_AGENT_ACCESS_TOKEN -e BUILDKITE_PLUGINS \
   "$IMAGE"
