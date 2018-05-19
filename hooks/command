@@ -32,14 +32,8 @@ fi
 echo "Running container"
 BUILDKITE_AGENT_PATH="$(which buildkite-agent)"
 
-docker volume create \
-  --name buildkite_agent \
-  --opt type=none \
-  --opt device="$BUILDKITE_AGENT_PATH" \
-  --opt o=bind
-
 docker run --rm \
-  --mount source=buildkit_agent,target=/usr/bin/buildkite-agent \
+  --mount type=bind,source="$BUILDKITE_AGENT_PATH",target=/app/src/bin/buildkite/buildkite-agent \
   -e BUILDKITE_BUILD_ID \
   -e BUILDKITE_JOB_ID \
   -e BUILDKITE_AGENT_ACCESS_TOKEN \

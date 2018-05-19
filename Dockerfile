@@ -10,6 +10,10 @@ ENV APP_DIR=/usr/src/app
 
 COPY . $APP_DIR
 RUN mkdir -p $APP_DIR/vendor && ln -s /opt/gems/vendor/bundle $APP_DIR/vendor/bundle
+RUN mkdir -p $APP_DIR/bin/buildkite && touch $APP_DIR/bin/buildkite/buildkite-agent && chmod +x $APP_DIR/bin/buildkite/buildkite-agent
+ENV PATH="$APP_DIR/bin/buildkite:${PATH}"
+
+VOLUME $APP_DIR/bin/buildkite
 
 WORKDIR $APP_DIR
 CMD ["./bin/run"]
