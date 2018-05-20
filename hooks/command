@@ -34,6 +34,7 @@ BUILDKITE_AGENT_PATH="$(which buildkite-agent)"
 
 docker run --rm \
   -v "$BUILDKITE_AGENT_PATH:/app/src/bin/buildkite" \
+  -v "/tmp/rspec:/tmp/test-summary" \
   -e BUILDKITE_BUILD_ID \
   -e BUILDKITE_JOB_ID \
   -e BUILDKITE_AGENT_ACCESS_TOKEN \
